@@ -16,29 +16,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ⭐ Top Toolbar
+        // Top Toolbar
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         setSupportActionBar(topAppBar)
 
-        // ⭐ Input fields
+        // Input fields
         val etPrice = findViewById<EditText>(R.id.etVehiclePrice)
         val etDown = findViewById<EditText>(R.id.etDownPayment)
         val etYears = findViewById<EditText>(R.id.etLoanPeriod)
         val etRate = findViewById<EditText>(R.id.etInterestRate)
 
-        // ⭐ Buttons
+        // Buttons
         val btnCalculate = findViewById<Button>(R.id.btnCalculate)
         val btnClear = findViewById<Button>(R.id.btnClear)
 
-        // ⭐ Output fields
+        // Output fields
         val tvLoanAmount = findViewById<TextView>(R.id.tvLoanAmount)
         val tvTotalInterest = findViewById<TextView>(R.id.tvTotalInterest)
         val tvTotalPayment = findViewById<TextView>(R.id.tvTotalPayment)
         val tvMonthlyPayment = findViewById<TextView>(R.id.tvMonthlyPayment)
 
-        // ================================
-        // 🔢 CALCULATION LOGIC
-        // ================================
+
+        // CALCULATION LOGIC
         btnCalculate.setOnClickListener {
             val price = etPrice.text.toString().toDoubleOrNull()
             val down = etDown.text.toString().toDoubleOrNull()
@@ -67,9 +66,7 @@ class MainActivity : AppCompatActivity() {
             tvMonthlyPayment.text = "RM %.2f".format(monthlyPayment)
         }
 
-        // ================================
-        // 🧹 CLEAR BUTTON
-        // ================================
+        // CLEAR BUTTON
         btnClear.setOnClickListener {
             etPrice.text.clear()
             etDown.text.clear()
@@ -83,9 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // ================================
-    // 📌 MENU (Home & About)
-    // ================================
+    // MENU (Home & About)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true

@@ -11,11 +11,11 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
-        // ⭐ Clickable Github Link
+
         val tvGithub = findViewById<TextView>(R.id.tvGithub)
 
         tvGithub.setOnClickListener {
-            val url = "https://github.com/yourusername/yourrepository"  // <-- change this
+            val url = "https://github.com/puteriwirdani14/VehicleLoanCalculator"
             val intent = android.content.Intent(
                 android.content.Intent.ACTION_VIEW,
                 Uri.parse(url)

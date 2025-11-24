@@ -11,16 +11,16 @@
         android:id="@+id/imgIcon"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginBottom="16dp"
         android:contentDescription="App Icon"
-        android:layout_marginBottom="16dp"/>
+        android:src="@mipmap/ic_launcher_foreground" />
 
     <!-- Author Info -->
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Author: Your Name\nMatric No: XXXXXXX\nCourse: Mobile Technology"
+        android:text="Author: PUTERI WIRDANI BINTI ISHAK\nMatric No: 2023298194\nCourse: ICT602 Mobile Technology"
         android:textSize="16sp"
         android:textAlignment="center"
         android:layout_marginBottom="20dp" />
@@ -41,7 +41,7 @@
         android:id="@+id/tvCopyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="© 2025 Your Name. All Rights Reserved."
+        android:text="© 2025 Puteri Wirdani All Rights Reserved."
         android:textSize="14sp"
         android:textAlignment="center" />
 
