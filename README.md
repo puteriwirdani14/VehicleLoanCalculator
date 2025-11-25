@@ -9,9 +9,9 @@ A simple Android application to calculate:
 - Monthly Payment
 
 ## Developer Information
-- Name: YOUR NAME
-- Matric No: YOUR MATRIC NUMBER
-- Course: YOUR COURSE
+- Name: PUTERI WIRDANI BINTI ISHAK
+- Matric No: 2023298194
+- Course: ICT602 MOBILE DEVELOPMENT
 
 ## Features
 - Input vehicle price, down payment, loan period, and interest rate
@@ -27,5 +27,5 @@ A simple Android application to calculate:
 - Kotlin
 - Material Design Components
 
-  Let's check it out!!
+  TQ for reading this now let's check it out!!
 
