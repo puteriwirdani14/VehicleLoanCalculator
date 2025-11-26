@@ -15,7 +15,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:title="Vehicle Loan Estimator"
-        android:titleTextColor="@android:color/white"
+        android:titleTextColor="@color/on_primary_light"
         app:menu="@menu/menu_main" />
 
     <!-- Scrollable Content -->

@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         val etYears = findViewById<EditText>(R.id.etLoanPeriod)
         val etRate = findViewById<EditText>(R.id.etInterestRate)
 
+
+
         // Buttons
         val btnCalculate = findViewById<Button>(R.id.btnCalculate)
         val btnClear = findViewById<Button>(R.id.btnClear)
@@ -38,29 +40,51 @@ class MainActivity : AppCompatActivity() {
 
         // CALCULATION LOGIC
         btnCalculate.setOnClickListener {
-            val price = etPrice.text.toString().toDoubleOrNull()
-            val down = etDown.text.toString().toDoubleOrNull()
-            val years = etYears.text.toString().toIntOrNull()
-            val rate = etRate.text.toString().toDoubleOrNull()
 
-            if (price == null || down == null || years == null || rate == null) {
-                tvLoanAmount.text = "RM0.00"
-                tvTotalInterest.text = "RM0.00"
-                tvTotalPayment.text = "RM0.00"
-                tvMonthlyPayment.text = "RM0.00"
+            // Validate input fields
+            if (etPrice.text.isNullOrEmpty()) {
+                etPrice.error = "Please enter vehicle price"
+                etPrice.requestFocus()
                 return@setOnClickListener
             }
 
+            if (etDown.text.isNullOrEmpty()) {
+                etDown.error = "Please enter down payment"
+                etDown.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (etYears.text.isNullOrEmpty()) {
+                etYears.error = "Please enter loan period"
+                etYears.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (etRate.text.isNullOrEmpty()) {
+                etRate.error = "Please enter interest rate"
+                etRate.requestFocus()
+                return@setOnClickListener
+            }
+
+            // After validation, safely convert values
+            val price = etPrice.text.toString().toDouble()
+            val down = etDown.text.toString().toDouble()
+            val years = etYears.text.toString().toInt()
+            val rate = etRate.text.toString().toDouble()
+
+            // Perform calculations
             val loanAmount = price - down
             val totalInterest = loanAmount * (rate / 100) * years
             val totalPayment = loanAmount + totalInterest
             val monthlyPayment = totalPayment / (years * 12)
 
+            // Display results
             tvLoanAmount.text = "RM %.2f".format(loanAmount)
             tvTotalInterest.text = "RM %.2f".format(totalInterest)
             tvTotalPayment.text = "RM %.2f".format(totalPayment)
             tvMonthlyPayment.text = "RM %.2f".format(monthlyPayment)
         }
+
 
         // CLEAR BUTTON
         btnClear.setOnClickListener {
