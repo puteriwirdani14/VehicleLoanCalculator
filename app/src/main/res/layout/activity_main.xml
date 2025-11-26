@@ -6,19 +6,19 @@
     android:id="@+id/clRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="16dp">
+    tools:context=".MainActivity">
 
+    <!-- Top Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Vehicle Loan Estimator"
-        app:titleCentered="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:background="?attr/colorPrimary"
+        android:title="Vehicle Loan Estimator"
+        android:titleTextColor="@android:color/white"
+        app:menu="@menu/menu_main" />
 
+    <!-- Scrollable Content -->
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
@@ -32,12 +32,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="12dp"
+            android:padding="16dp"
             android:paddingBottom="24dp">
 
             <!-- Inputs -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Vehicle Price (RM)" />
+
             <EditText
                 android:id="@+id/etVehiclePrice"
                 android:layout_width="match_parent"
@@ -45,8 +48,12 @@
                 android:inputType="numberDecimal"
                 android:hint="e.g. 80000" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" android:text="Down Payment (RM)" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Down Payment (RM)" />
+
             <EditText
                 android:id="@+id/etDownPayment"
                 android:layout_width="match_parent"
@@ -54,8 +61,12 @@
                 android:inputType="numberDecimal"
                 android:hint="e.g. 10000" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" android:text="Loan Period (Years)" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Loan Period (Years)" />
+
             <EditText
                 android:id="@+id/etLoanPeriod"
                 android:layout_width="match_parent"
@@ -63,8 +74,12 @@
                 android:inputType="number"
                 android:hint="e.g. 5" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" android:text="Interest Rate (%) per year" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Interest Rate (%) per year" />
+
             <EditText
                 android:id="@+id/etInterestRate"
                 android:layout_width="match_parent"
@@ -87,7 +102,9 @@
                     android:layout_weight="1"
                     android:text="Calculate" />
 
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/btnClear"
@@ -98,28 +115,59 @@
             </LinearLayout>
 
             <!-- Outputs -->
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#DDD"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDD"
                 android:layout_marginTop="16dp" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Loan Amount" android:layout_marginTop="12dp"/>
-            <TextView android:id="@+id/tvLoanAmount" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="RM0.00" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loan Amount"
+                android:layout_marginTop="12dp"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Total Interest" android:layout_marginTop="8dp"/>
-            <TextView android:id="@+id/tvTotalInterest" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="RM0.00" />
+            <TextView
+                android:id="@+id/tvLoanAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RM0.00" />
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Total Payment" android:layout_marginTop="8dp"/>
-            <TextView android:id="@+id/tvTotalPayment" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="RM0.00" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Interest"
+                android:layout_marginTop="8dp"/>
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Monthly Payment" android:layout_marginTop="8dp"/>
-            <TextView android:id="@+id/tvMonthlyPayment" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:text="RM0.00" />
+            <TextView
+                android:id="@+id/tvTotalInterest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RM0.00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Payment"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tvTotalPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RM0.00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monthly Payment"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/tvMonthlyPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RM0.00" />
 
         </LinearLayout>
     </ScrollView>

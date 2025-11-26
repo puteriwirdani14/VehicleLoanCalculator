@@ -11,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Top Toolbar
-        val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
-        setSupportActionBar(topAppBar)
+        // Set up toolbar
+        val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Vehicle Loan Calculator"
 
         // Input fields
         val etPrice = findViewById<EditText>(R.id.etVehiclePrice)
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         val tvTotalPayment = findViewById<TextView>(R.id.tvTotalPayment)
         val tvMonthlyPayment = findViewById<TextView>(R.id.tvMonthlyPayment)
 
-
         // CALCULATION LOGIC
         btnCalculate.setOnClickListener {
             val price = etPrice.text.toString().toDoubleOrNull()
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             val years = etYears.text.toString().toIntOrNull()
             val rate = etRate.text.toString().toDoubleOrNull()
 
-            // Input validation
             if (price == null || down == null || years == null || rate == null) {
                 tvLoanAmount.text = "RM0.00"
                 tvTotalInterest.text = "RM0.00"
@@ -53,13 +51,11 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Calculation
             val loanAmount = price - down
             val totalInterest = loanAmount * (rate / 100) * years
             val totalPayment = loanAmount + totalInterest
             val monthlyPayment = totalPayment / (years * 12)
 
-            // Display results
             tvLoanAmount.text = "RM %.2f".format(loanAmount)
             tvTotalInterest.text = "RM %.2f".format(totalInterest)
             tvTotalPayment.text = "RM %.2f".format(totalPayment)
@@ -80,23 +76,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // MENU (Home & About)
+    // Inflate menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
+    // Handle menu clicks
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-
-            R.id.action_home -> true
-
             R.id.action_about -> {
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, AboutActivity::class.java))
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
